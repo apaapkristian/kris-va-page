@@ -3,13 +3,13 @@
     "name": "Kris",
     "initials": "KR",
     "title": "Automation & Backend Systems",
-    "metaDescription": "Automation Engineer portfolio focused on API integrations, n8n, GoHighLevel, Discord bots, and backend systems.",
+    "metaDescription": "Automation engineer portfolio focused on Oracle Cloud bot hosting, Discord systems, n8n workflows, GoHighLevel CRM, and API integrations.",
     "profileImage": "assets/profile-placeholder.svg"
   },
   "hero": {
-    "eyebrow": "Automation Engineer | API Integrations | GoHighLevel | n8n",
+    "eyebrow": "Automation Engineer | Oracle Cloud | Discord Bots | n8n | GoHighLevel",
     "title": "I build backend systems that remove manual work and keep online businesses moving.",
-    "subtitle": "I design automations, connect APIs, build Discord systems, and create backend workflows that reduce manual work for e-commerce teams, online communities, and service businesses.",
+    "subtitle": "I design automations, connect APIs, host Discord bot stacks on Oracle Cloud Ubuntu, and build backend workflows that reduce manual work for e-commerce teams, online communities, and service businesses.",
     "primaryCta": {
       "label": "Work With Me",
       "href": "#contact"
@@ -22,7 +22,7 @@
   "stats": [
     {
       "value": "24/7",
-      "label": "Bot and workflow uptime mindset"
+      "label": "systemd-managed bot uptime mindset"
     },
     {
       "value": "API",
@@ -34,27 +34,29 @@
     }
   ],
   "tools": [
+    "Oracle Cloud",
+    "systemd",
+    "Discord Bots",
+    "Python",
     "n8n",
     "GoHighLevel",
-    "Discord Bots",
     "APIs",
     "Webhooks",
-    "Oracle Cloud",
-    "Framer",
     "Telnyx",
     "JavaScript",
-    "Python"
+    "Ubuntu",
+    "GitHub Deploy"
   ],
   "about": {
     "title": "Backend automation for operators who need speed, reliability, and clean workflows.",
-    "body": "I help businesses connect their tools, automate repetitive tasks, and build systems that can run without constant manual checking. My work is focused on practical execution: Discord bot infrastructure, workflow automation, API connections, SMS/CRM automations, and internal tools for online businesses.",
+    "body": "I help businesses connect their tools, automate repetitive tasks, and build systems that can run without constant manual checking. My work is focused on practical execution: Oracle Cloud Ubuntu hosting with systemd services, Discord bot infrastructure, n8n workflow automation, API and webhook integrations, SMS/CRM automations, and deploy tooling that keeps multi-bot stacks in sync.",
     "specialties": [
+      "Oracle Cloud Ops",
       "Workflow Automation",
       "API Integrations",
       "Discord Infrastructure",
       "CRM Automation",
-      "Backend Operations",
-      "E-commerce Systems"
+      "Backend Operations"
     ]
   },
   "services": [
@@ -80,20 +82,20 @@
     },
     {
       "icon": "☁️",
-      "title": "Server Setup & Bot Hosting",
-      "description": "Deploy bots on cloud servers, configure auto-restart, manage environment variables, and keep systems running."
+      "title": "Oracle Cloud & systemd Hosting",
+      "description": "Deploy bot stacks on Oracle Ubuntu, install mirror-world-style systemd units, configure auto-restart, manage secrets and env vars, and keep production services running."
     },
     {
       "icon": "🧰",
-      "title": "Internal Tools & Dashboards",
-      "description": "Create lightweight dashboards, admin tools, and structured pages that make operations easier to manage."
+      "title": "Deploy, Sync & Admin Tooling",
+      "description": "Build deploy scripts, manifest verification, SSH workflows, and admin commands so code updates reach the server safely and predictably."
     }
   ],
   "projects": [
     {
       "title": "Discord Automation Bot Stack",
-      "description": "A bot setup for community announcements, role-based alerts, slash commands, and automated operational posting.",
-      "image": "discord-automation.webp",
+      "description": "Multi-bot Discord setup for community announcements, role-based alerts, slash commands, monitoring channels, and automated operational posting.",
+      "image": "assets/discord-automation.webp",
       "video": "",
       "tags": [
         "Discord.js",
@@ -106,8 +108,8 @@
     },
     {
       "title": "GHL + SMS Automation Workflow",
-      "description": "A CRM workflow system for opt-ins, customer replies, failed billing follow-ups, and segmented notifications.",
-      "image": "assets/project-ghl.svg",
+      "description": "GoHighLevel CRM workflow for opt-ins, customer replies, failed billing follow-ups, Telnyx SMS routing, and segmented staff notifications.",
+      "image": "assets/ghl-crm.webp",
       "video": "",
       "tags": [
         "GoHighLevel",
@@ -120,8 +122,8 @@
     },
     {
       "title": "n8n API Operations Hub",
-      "description": "Automated workflows that move data between tools, trigger alerts, clean payloads, and reduce manual admin work.",
-      "image": "assets/project-n8n.svg",
+      "description": "n8n workflows that move data between tools, trigger alerts, clean webhook payloads, and cut down repeated admin work across connected systems.",
+      "image": "assets/n8n-workflow.webp",
       "video": "",
       "tags": [
         "n8n",
@@ -133,26 +135,26 @@
       "linkLabel": "View Demo"
     },
     {
-      "title": "Framer Landing Page + Embedded Tools",
-      "description": "Website and embedded tool setup for forms, SMS links, opt-in pages, and tracking workflows.",
-      "image": "assets/project-framer.svg",
+      "title": "Oracle Cloud Bot Infrastructure",
+      "description": "Ubuntu deployment stack for running many bots from one repo root: shared Python venv, per-bot systemd services, RSAdminBot sync/deploy commands, manifest checks, and SSH-managed updates.",
+      "image": "assets/oracle-infrastructure.webp",
       "video": "",
       "tags": [
-        "Framer",
-        "HTML",
-        "JavaScript",
-        "Automation"
+        "Oracle Cloud",
+        "systemd",
+        "Ubuntu",
+        "Python"
       ],
       "link": "#",
-      "linkLabel": "Open Page"
+      "linkLabel": "View Stack"
     }
   ],
   "media": [
     {
       "type": "image",
-      "title": "Workflow Screenshot",
-      "description": "Replace this with a screenshot of your n8n or GHL workflow.",
-      "src": "assets/media-workflow.svg"
+      "title": "API Integration Layer",
+      "description": "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
+      "src": "assets/api-integrations.webp"
     },
     {
       "type": "video",
@@ -185,7 +187,6 @@
     "title": "Need a system built or fixed?",
     "body": "Send me what you are trying to automate, what tools you use, and where the manual work is slowing you down. I can help map the workflow and build the backend system around it.",
     "email": "mailto:flippedkicks2020@gmail.com",
-    "discord": "https://discord.com/",
-    "website": "https://example.com"
+    "facebook": "https://www.facebook.com/akumu.yamato/"
   }
 }
