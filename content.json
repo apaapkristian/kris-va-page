@@ -95,44 +95,38 @@
     {
       "title": "Discord Automation Bot Stack",
       "description": "Multi-bot Discord setup for community announcements, role-based alerts, slash commands, monitoring channels, and automated operational posting.",
-      "image": "assets/discord-automation.webp",
+      "image": "assets/discord-bot-flow-showcase.svg",
       "video": "",
       "tags": [
         "Discord.js",
         "Oracle Cloud",
         "Slash Commands",
         "Automation"
-      ],
-      "link": "#",
-      "linkLabel": "View Case Study"
+      ]
     },
     {
       "title": "GHL + SMS Automation Workflow",
       "description": "GoHighLevel CRM workflow for opt-ins, customer replies, failed billing follow-ups, Telnyx SMS routing, and segmented staff notifications.",
-      "image": "assets/ghl-crm.webp",
+      "image": "assets/ghl-sms-automation-workflow.svg",
       "video": "",
       "tags": [
         "GoHighLevel",
         "Telnyx",
         "SMS",
         "CRM"
-      ],
-      "link": "#",
-      "linkLabel": "View Workflow"
+      ]
     },
     {
       "title": "n8n API Operations Hub",
       "description": "n8n workflows that move data between tools, trigger alerts, clean webhook payloads, and cut down repeated admin work across connected systems.",
-      "image": "assets/n8n-workflow.webp",
+      "image": "assets/n8n-api-operations-hub.svg",
       "video": "",
       "tags": [
         "n8n",
         "APIs",
         "Webhooks",
         "Data Sync"
-      ],
-      "link": "#",
-      "linkLabel": "View Demo"
+      ]
     },
     {
       "title": "Oracle Cloud Bot Infrastructure",
@@ -144,9 +138,7 @@
         "systemd",
         "Ubuntu",
         "Python"
-      ],
-      "link": "#",
-      "linkLabel": "View Stack"
+      ]
     }
   ],
   "proof": {
@@ -168,7 +160,7 @@
         "type": "image",
         "title": "API Integration Layer",
         "description": "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
-        "src": "assets/api-integrations.webp"
+        "src": "assets/automation-backend-showcase-base.svg"
       },
       {
         "type": "video",

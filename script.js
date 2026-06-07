@@ -60,38 +60,30 @@ const fallbackData = {
     {
       title: "Discord Automation Bot Stack",
       description: "Multi-bot Discord setup for community announcements, role-based alerts, slash commands, monitoring channels, and automated operational posting.",
-      image: "assets/discord-automation.webp",
+      image: "assets/discord-bot-flow-showcase.svg",
       video: "",
-      tags: ["Discord.js", "Oracle Cloud", "Slash Commands", "Automation"],
-      link: "#",
-      linkLabel: "View Case Study"
+      tags: ["Discord.js", "Oracle Cloud", "Slash Commands", "Automation"]
     },
     {
       title: "GHL + SMS Automation Workflow",
       description: "GoHighLevel CRM workflow for opt-ins, customer replies, failed billing follow-ups, Telnyx SMS routing, and segmented staff notifications.",
-      image: "assets/ghl-crm.webp",
+      image: "assets/ghl-sms-automation-workflow.svg",
       video: "",
-      tags: ["GoHighLevel", "Telnyx", "SMS", "CRM"],
-      link: "#",
-      linkLabel: "View Workflow"
+      tags: ["GoHighLevel", "Telnyx", "SMS", "CRM"]
     },
     {
       title: "n8n API Operations Hub",
       description: "n8n workflows that move data between tools, trigger alerts, clean webhook payloads, and cut down repeated admin work across connected systems.",
-      image: "assets/n8n-workflow.webp",
+      image: "assets/n8n-api-operations-hub.svg",
       video: "",
-      tags: ["n8n", "APIs", "Webhooks", "Data Sync"],
-      link: "#",
-      linkLabel: "View Demo"
+      tags: ["n8n", "APIs", "Webhooks", "Data Sync"]
     },
     {
       title: "Oracle Cloud Bot Infrastructure",
       description: "Ubuntu deployment stack for running many bots from one repo root: shared Python venv, per-bot systemd services, RSAdminBot sync/deploy commands, manifest checks, and SSH-managed updates.",
       image: "assets/oracle-infrastructure.webp",
       video: "",
-      tags: ["Oracle Cloud", "systemd", "Ubuntu", "Python"],
-      link: "#",
-      linkLabel: "View Stack"
+      tags: ["Oracle Cloud", "systemd", "Ubuntu", "Python"]
     }
   ],
   proof: {
@@ -113,7 +105,7 @@ const fallbackData = {
         type: "image",
         title: "API Integration Layer",
         description: "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
-        src: "assets/api-integrations.webp"
+        src: "assets/automation-backend-showcase-base.svg"
       },
       {
         type: "video",
@@ -327,6 +319,52 @@ function closeLightbox() {
   document.body.style.overflow = "";
 }
 
+function projectLightboxSlide(project) {
+  if (project.video) {
+    return { type: "video", src: project.video, poster: project.image || "", title: project.title };
+  }
+  if (project.image) {
+    return { type: "image", src: project.image, title: project.title };
+  }
+  return null;
+}
+
+function bindProjectMediaLightbox(projects) {
+  const grid = document.getElementById("project-grid");
+  if (!grid) return;
+  grid.querySelectorAll(".project-media[data-expandable='true']").forEach(el => {
+    const index = Number(el.dataset.projectIndex);
+    const slide = projectLightboxSlide(projects[index]);
+    if (!slide) return;
+    const open = () => openLightbox(slide);
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+function bindProfileLightbox(profile) {
+  const frame = document.querySelector(".profile-frame");
+  const src = profile.profileImage;
+  if (!frame || !src) return;
+  frame.classList.add("is-expandable");
+  frame.setAttribute("role", "button");
+  frame.setAttribute("tabindex", "0");
+  frame.setAttribute("aria-label", `Expand ${profile.title || profile.name} showcase`);
+  const open = () => openLightbox({ type: "image", src, title: profile.title || profile.name });
+  frame.addEventListener("click", open);
+  frame.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open();
+    }
+  });
+}
+
 function bindLightboxControls() {
   const lightbox = document.getElementById("lightbox");
   const closeBtn = document.getElementById("lightbox-close");
@@ -469,6 +507,7 @@ function render(data) {
   const profileImg = document.getElementById("profile-image");
   profileImg.src = data.profile.profileImage;
   profileImg.alt = `${data.profile.name} profile image`;
+  bindProfileLightbox(data.profile);
 
   document.getElementById("stats").innerHTML = data.stats.map(s => `
     <div class="stat"><strong>${s.value}</strong><span>${s.label}</span></div>
@@ -488,17 +527,22 @@ function render(data) {
     </article>
   `).join("");
 
-  document.getElementById("project-grid").innerHTML = data.projects.map(project => `
+  document.getElementById("project-grid").innerHTML = data.projects.map((project, index) => {
+    const expandable = Boolean(project.image || project.video);
+    return `
     <article class="project-card">
-      <div class="project-media">${mediaMarkup(project)}</div>
+      <div class="project-media${expandable ? " is-expandable" : ""}" data-expandable="${expandable}" data-project-index="${index}"${expandable ? ` role="button" tabindex="0" aria-label="Expand ${project.title}"` : ""}>
+        ${mediaMarkup(project, "project-preview")}
+      </div>
       <div class="project-content">
         <h3>${project.title}</h3>
         <p>${project.description}</p>
         <div class="project-tags">${(project.tags || []).map(tag => `<span class="chip">${tag}</span>`).join("")}</div>
-        <a class="project-link" href="${project.link || "#"}">${project.linkLabel || "View Project"}</a>
       </div>
     </article>
-  `).join("");
+  `;
+  }).join("");
+  bindProjectMediaLightbox(data.projects);
 
   renderProof(resolveProofData(data));
   bindLightboxControls();
