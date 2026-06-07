@@ -358,13 +358,36 @@ h3 { font-size: 22px; line-height: 1.15; }
 }
 .contact-card { padding: 24px; display: grid; gap: 12px; }
 .contact-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 16px 18px;
   border-radius: 16px;
   background: rgba(255,255,255,.08);
   border: 1px solid var(--line);
   font-weight: 800;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
 }
+.contact-link:hover {
+  background: rgba(169,200,220,.12);
+  border-color: rgba(169,200,220,.35);
+  transform: translateY(-1px);
+}
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.contact-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.contact-label { color: var(--text); font-size: 16px; }
 footer {
   padding: 26px clamp(18px, 5vw, 72px);
   display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
