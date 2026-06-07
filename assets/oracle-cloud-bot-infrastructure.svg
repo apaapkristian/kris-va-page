@@ -48,7 +48,7 @@
   </g>
 
   <!-- central cloud / compute -->
-  <g class="float" transform="translate(470 180)" filter="url(#shadow)">
+  <g transform="translate(470 180)" filter="url(#shadow)">
     <path d="M95 95c-28 0-50-20-50-46 0-24 19-44 44-46C101-21 136-32 166-15c21 12 33 34 31 57 25 3 44 23 44 49 0 28-23 50-54 50H95z" fill="#0d1f32" stroke="#2ed3ff" stroke-width="2"/>
     <path d="M95 95c-28 0-50-20-50-46 0-24 19-44 44-46C101-21 136-32 166-15c21 12 33 34 31 57 25 3 44 23 44 49" fill="none" stroke="url(#redline)" stroke-width="5" opacity=".75"/>
     <text class="nodeText" x="83" y="62">Cloud Compute</text>

@@ -81,7 +81,7 @@ const fallbackData = {
     {
       title: "Oracle Cloud Bot Infrastructure",
       description: "Ubuntu deployment stack for running many bots from one repo root: shared Python venv, per-bot systemd services, RSAdminBot sync/deploy commands, manifest checks, and SSH-managed updates.",
-      image: "assets/oracle-infrastructure.webp",
+      image: "assets/oracle-cloud-bot-infrastructure.svg",
       video: "",
       tags: ["Oracle Cloud", "systemd", "Ubuntu", "Python"]
     }
