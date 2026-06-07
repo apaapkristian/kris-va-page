@@ -1,0 +1,191 @@
+{
+  "profile": {
+    "name": "Kris",
+    "initials": "KR",
+    "title": "Automation & Backend Systems",
+    "metaDescription": "Automation Engineer portfolio focused on API integrations, n8n, GoHighLevel, Discord bots, and backend systems.",
+    "profileImage": "assets/profile-placeholder.svg"
+  },
+  "hero": {
+    "eyebrow": "Automation Engineer | API Integrations | GoHighLevel | n8n",
+    "title": "I build backend systems that remove manual work and keep online businesses moving.",
+    "subtitle": "I design automations, connect APIs, build Discord systems, and create backend workflows that reduce manual work for e-commerce teams, online communities, and service businesses.",
+    "primaryCta": {
+      "label": "Work With Me",
+      "href": "#contact"
+    },
+    "secondaryCta": {
+      "label": "View Systems",
+      "href": "#systems"
+    }
+  },
+  "stats": [
+    {
+      "value": "24/7",
+      "label": "Bot and workflow uptime mindset"
+    },
+    {
+      "value": "API",
+      "label": "Custom integrations and webhooks"
+    },
+    {
+      "value": "GHL",
+      "label": "CRM, SMS, funnels, automations"
+    }
+  ],
+  "tools": [
+    "n8n",
+    "GoHighLevel",
+    "Discord Bots",
+    "APIs",
+    "Webhooks",
+    "Oracle Cloud",
+    "Framer",
+    "Telnyx",
+    "JavaScript",
+    "Python"
+  ],
+  "about": {
+    "title": "Backend automation for operators who need speed, reliability, and clean workflows.",
+    "body": "I help businesses connect their tools, automate repetitive tasks, and build systems that can run without constant manual checking. My work is focused on practical execution: Discord bot infrastructure, workflow automation, API connections, SMS/CRM automations, and internal tools for online businesses.",
+    "specialties": [
+      "Workflow Automation",
+      "API Integrations",
+      "Discord Infrastructure",
+      "CRM Automation",
+      "Backend Operations",
+      "E-commerce Systems"
+    ]
+  },
+  "services": [
+    {
+      "icon": "⚙️",
+      "title": "n8n Workflow Automation",
+      "description": "Build automated workflows for lead routing, notifications, data syncing, reporting, and internal operations."
+    },
+    {
+      "icon": "🔌",
+      "title": "API & Webhook Integrations",
+      "description": "Connect apps together using APIs, webhooks, custom payloads, and backend logic."
+    },
+    {
+      "icon": "🤖",
+      "title": "Discord Bot Systems",
+      "description": "Create and maintain Discord bots for announcements, monitoring, slash commands, role workflows, and community operations."
+    },
+    {
+      "icon": "📲",
+      "title": "GoHighLevel Automation",
+      "description": "Set up GHL workflows, SMS/email automations, forms, funnels, pipelines, and customer follow-up systems."
+    },
+    {
+      "icon": "☁️",
+      "title": "Server Setup & Bot Hosting",
+      "description": "Deploy bots on cloud servers, configure auto-restart, manage environment variables, and keep systems running."
+    },
+    {
+      "icon": "🧰",
+      "title": "Internal Tools & Dashboards",
+      "description": "Create lightweight dashboards, admin tools, and structured pages that make operations easier to manage."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Discord Automation Bot Stack",
+      "description": "A bot setup for community announcements, role-based alerts, slash commands, and automated operational posting.",
+      "image": "discord-automation.webp",
+      "video": "",
+      "tags": [
+        "Discord.js",
+        "Oracle Cloud",
+        "Slash Commands",
+        "Automation"
+      ],
+      "link": "#",
+      "linkLabel": "View Case Study"
+    },
+    {
+      "title": "GHL + SMS Automation Workflow",
+      "description": "A CRM workflow system for opt-ins, customer replies, failed billing follow-ups, and segmented notifications.",
+      "image": "assets/project-ghl.svg",
+      "video": "",
+      "tags": [
+        "GoHighLevel",
+        "Telnyx",
+        "SMS",
+        "CRM"
+      ],
+      "link": "#",
+      "linkLabel": "View Workflow"
+    },
+    {
+      "title": "n8n API Operations Hub",
+      "description": "Automated workflows that move data between tools, trigger alerts, clean payloads, and reduce manual admin work.",
+      "image": "assets/project-n8n.svg",
+      "video": "",
+      "tags": [
+        "n8n",
+        "APIs",
+        "Webhooks",
+        "Data Sync"
+      ],
+      "link": "#",
+      "linkLabel": "View Demo"
+    },
+    {
+      "title": "Framer Landing Page + Embedded Tools",
+      "description": "Website and embedded tool setup for forms, SMS links, opt-in pages, and tracking workflows.",
+      "image": "assets/project-framer.svg",
+      "video": "",
+      "tags": [
+        "Framer",
+        "HTML",
+        "JavaScript",
+        "Automation"
+      ],
+      "link": "#",
+      "linkLabel": "Open Page"
+    }
+  ],
+  "media": [
+    {
+      "type": "image",
+      "title": "Workflow Screenshot",
+      "description": "Replace this with a screenshot of your n8n or GHL workflow.",
+      "src": "assets/media-workflow.svg"
+    },
+    {
+      "type": "video",
+      "title": "Bot Demo Video",
+      "description": "Replace this with an MP4 demo or hosted video URL.",
+      "src": ""
+    },
+    {
+      "type": "embed",
+      "title": "Loom / YouTube Demo",
+      "description": "Paste an embed URL here for a walkthrough.",
+      "src": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Cho helped us turn messy manual work into a system we could actually run every day.",
+      "author": "Client Name, Operations Lead"
+    },
+    {
+      "quote": "The bot and automation setup saved hours of repeated admin work each week.",
+      "author": "Client Name, Community Owner"
+    },
+    {
+      "quote": "Fast, practical, and easy to work with. The workflow was built around how our business actually operates.",
+      "author": "Client Name, E-commerce Operator"
+    }
+  ],
+  "contact": {
+    "title": "Need a system built or fixed?",
+    "body": "Send me what you are trying to automate, what tools you use, and where the manual work is slowing you down. I can help map the workflow and build the backend system around it.",
+    "email": "mailto:flippedkicks2020@gmail.com",
+    "discord": "https://discord.com/",
+    "website": "https://example.com"
+  }
+}
