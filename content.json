@@ -149,26 +149,36 @@
       "linkLabel": "View Stack"
     }
   ],
-  "media": [
-    {
-      "type": "image",
-      "title": "API Integration Layer",
-      "description": "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
-      "src": "assets/api-integrations.webp"
+  "proof": {
+    "intro": "Live system visuals, walkthrough videos, and screenshots you can expand.",
+    "showcase": {
+      "title": "Live Systems Showcase",
+      "description": "Animated overview of bot operations, CRM automations, n8n workflows, API syncs, and Oracle Cloud infrastructure.",
+      "src": "assets/automation-backend-live-showcase.svg",
+      "alt": "Automation and backend systems animated showcase"
     },
-    {
-      "type": "video",
-      "title": "Bot Demo Video",
-      "description": "Replace this with an MP4 demo or hosted video URL.",
-      "src": ""
-    },
-    {
-      "type": "embed",
-      "title": "Loom / YouTube Demo",
-      "description": "Paste an embed URL here for a walkthrough.",
-      "src": ""
-    }
-  ],
+    "slides": [
+      {
+        "type": "embed",
+        "title": "Workflow Walkthrough",
+        "description": "Loom demo of backend automation and bot operations in practice.",
+        "src": "https://www.loom.com/embed/f92c44c8c8c04ecdb20bb5aa7aefa04b"
+      },
+      {
+        "type": "image",
+        "title": "API Integration Layer",
+        "description": "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
+        "src": "assets/api-integrations.webp"
+      },
+      {
+        "type": "video",
+        "title": "Bot Demo Video",
+        "description": "Add an MP4 path when ready, e.g. assets/demo.mp4",
+        "src": "",
+        "poster": ""
+      }
+    ]
+  },
   "testimonials": [
     {
       "quote": "Cho helped us turn messy manual work into a system we could actually run every day.",

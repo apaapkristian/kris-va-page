@@ -94,26 +94,29 @@ const fallbackData = {
       linkLabel: "View Stack"
     }
   ],
-  media: [
-    {
-      type: "image",
-      title: "API Integration Layer",
-      description: "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
-      src: "assets/api-integrations.webp"
+  proof: {
+    intro: "Live system visuals, walkthrough videos, and screenshots you can expand.",
+    showcase: {
+      title: "Live Systems Showcase",
+      description: "Animated overview of bot operations, CRM automations, n8n workflows, API syncs, and Oracle Cloud infrastructure.",
+      src: "assets/automation-backend-live-showcase.svg",
+      alt: "Automation and backend systems animated showcase"
     },
-    {
-      type: "video",
-      title: "Bot Demo Video",
-      description: "Replace this with an MP4 demo or hosted video URL.",
-      src: ""
-    },
-    {
-      type: "embed",
-      title: "Loom / YouTube Demo",
-      description: "Paste an embed URL here for a walkthrough.",
-      src: ""
-    }
-  ],
+    slides: [
+      {
+        type: "embed",
+        title: "Workflow Walkthrough",
+        description: "Loom demo of backend automation and bot operations in practice.",
+        src: "https://www.loom.com/embed/f92c44c8c8c04ecdb20bb5aa7aefa04b"
+      },
+      {
+        type: "image",
+        title: "API Integration Layer",
+        description: "Webhook and API connections between Discord bots, CRM tools, sheets, and third-party services.",
+        src: "assets/api-integrations.webp"
+      }
+    ]
+  },
   testimonials: [
     {
       quote: "Cho helped us turn messy manual work into a system we could actually run every day.",
@@ -157,6 +160,236 @@ function setHref(id, href, label) {
   if (!el) return;
   el.href = href || "#";
   if (label) el.textContent = label;
+}
+
+function normalizeEmbedUrl(src) {
+  if (!src) return "";
+  const value = src.trim();
+  if (value.includes("loom.com/share/")) {
+    return value.replace("loom.com/share/", "loom.com/embed/");
+  }
+  if (value.includes("youtube.com/watch")) {
+    try {
+      const id = new URL(value).searchParams.get("v");
+      if (id) return `https://www.youtube.com/embed/${id}`;
+    } catch (_) {}
+  }
+  if (value.includes("youtu.be/")) {
+    const id = value.split("youtu.be/")[1]?.split(/[?#]/)[0];
+    if (id) return `https://www.youtube.com/embed/${id}`;
+  }
+  return value;
+}
+
+function resolveProofData(data) {
+  if (data.proof) return data.proof;
+  return {
+    intro: "Live system visuals, walkthrough videos, and screenshots you can expand.",
+    showcase: {
+      title: "Live Systems Showcase",
+      description: "",
+      src: "assets/automation-backend-live-showcase.svg",
+      alt: "Automation and backend systems animated showcase"
+    },
+    slides: (data.media || []).filter(item => item.src)
+  };
+}
+
+function activeProofSlides(slides) {
+  return (slides || []).filter(slide => {
+    const src = slide.src || slide.video || "";
+    return Boolean(src.trim());
+  }).map(slide => ({
+    ...slide,
+    src: normalizeEmbedUrl(slide.src || slide.video || "")
+  }));
+}
+
+function proofSlideMediaMarkup(slide, { preview = false } = {}) {
+  const className = preview ? "proof-slide-preview" : "";
+  if (slide.type === "video") {
+    const poster = slide.poster ? ` poster="${slide.poster}"` : "";
+    return `<video class="${className}" controls${poster}><source src="${slide.src}" type="video/mp4"></video>`;
+  }
+  if (slide.type === "embed") {
+    return `<iframe class="${className}" src="${slide.src}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${slide.title || "Embedded demo"}"></iframe>`;
+  }
+  return `<img class="${className}" src="${slide.src}" alt="${slide.title || "Proof screenshot"}">`;
+}
+
+function lightboxMarkup(slide) {
+  if (slide.type === "video") {
+    const poster = slide.poster ? ` poster="${slide.poster}"` : "";
+    return `<video controls autoplay${poster}><source src="${slide.src}" type="video/mp4"></video>`;
+  }
+  if (slide.type === "embed") {
+    return `<iframe src="${slide.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${slide.title || "Embedded demo"}"></iframe>`;
+  }
+  return `<img src="${slide.src}" alt="${slide.title || "Proof screenshot"}">`;
+}
+
+const proofState = { slides: [], index: 0 };
+
+function setProofIndex(nextIndex) {
+  if (!proofState.slides.length) return;
+  const total = proofState.slides.length;
+  proofState.index = ((nextIndex % total) + total) % total;
+  updateProofCarousel();
+}
+
+function updateProofCarousel() {
+  const track = document.getElementById("proof-carousel-track");
+  const meta = document.getElementById("proof-carousel-meta");
+  const dots = document.getElementById("proof-carousel-dots");
+  const prev = document.getElementById("proof-prev");
+  const next = document.getElementById("proof-next");
+  if (!track || !proofState.slides.length) return;
+
+  track.style.transform = `translateX(-${proofState.index * 100}%)`;
+  const slide = proofState.slides[proofState.index];
+  meta.textContent = `${proofState.index + 1} / ${proofState.slides.length} — ${slide.title || "Demo"}`;
+
+  dots.innerHTML = proofState.slides.map((_, i) => `
+    <button type="button" class="proof-dot${i === proofState.index ? " active" : ""}" aria-label="Go to slide ${i + 1}" data-index="${i}"></button>
+  `).join("");
+
+  dots.querySelectorAll(".proof-dot").forEach(dot => {
+    dot.addEventListener("click", () => setProofIndex(Number(dot.dataset.index)));
+  });
+
+  const single = proofState.slides.length <= 1;
+  prev.disabled = single;
+  next.disabled = single;
+}
+
+function openLightbox(slide) {
+  const lightbox = document.getElementById("lightbox");
+  const content = document.getElementById("lightbox-content");
+  if (!lightbox || !content) return;
+  content.innerHTML = lightboxMarkup(slide);
+  lightbox.hidden = false;
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const content = document.getElementById("lightbox-content");
+  if (!lightbox || !content) return;
+  content.innerHTML = "";
+  lightbox.hidden = true;
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function bindLightboxControls() {
+  const lightbox = document.getElementById("lightbox");
+  const closeBtn = document.getElementById("lightbox-close");
+  if (!lightbox || closeBtn.dataset.bound) return;
+  closeBtn.dataset.bound = "true";
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+}
+
+function bindProofCarouselControls() {
+  const prev = document.getElementById("proof-prev");
+  const next = document.getElementById("proof-next");
+  if (!prev || !next || prev.dataset.bound) return;
+  prev.dataset.bound = "true";
+  prev.addEventListener("click", () => setProofIndex(proofState.index - 1));
+  next.addEventListener("click", () => setProofIndex(proofState.index + 1));
+}
+
+function renderProof(proof) {
+  const showcaseEl = document.getElementById("proof-showcase");
+  const carouselWrap = document.getElementById("proof-carousel-wrap");
+  const track = document.getElementById("proof-carousel-track");
+  if (!showcaseEl || !carouselWrap || !track) return;
+
+  setText("proof-intro", proof.intro);
+
+  const showcase = proof.showcase || {};
+  showcaseEl.innerHTML = `
+    <div class="proof-showcase-head">
+      <h3>${showcase.title || "Live Systems Showcase"}</h3>
+      <p>${showcase.description || ""}</p>
+    </div>
+    <div class="proof-showcase-frame">
+      <img
+        class="proof-showcase-img"
+        src="${showcase.src || "assets/automation-backend-live-showcase.svg"}"
+        alt="${showcase.alt || "Automation and backend systems animated showcase"}"
+        loading="lazy"
+      />
+    </div>
+  `;
+
+  proofState.slides = activeProofSlides(proof.slides);
+  proofState.index = 0;
+
+  if (!proofState.slides.length) {
+    carouselWrap.hidden = true;
+    track.innerHTML = "";
+    return;
+  }
+
+  carouselWrap.hidden = false;
+  track.innerHTML = proofState.slides.map((slide, index) => {
+    const expandable = slide.type === "image" || slide.type === "video" || slide.type === "embed";
+    const mediaClickable = slide.type === "image";
+    return `
+      <article class="proof-slide" data-slide-index="${index}">
+        <div class="proof-slide-media${mediaClickable ? "" : " is-static"}" data-expandable="${mediaClickable}" data-slide-index="${index}">
+          ${proofSlideMediaMarkup(slide)}
+        </div>
+        <div class="proof-slide-body">
+          <h3>${slide.title || "Demo"}</h3>
+          <p>${slide.description || ""}</p>
+          ${expandable ? `<button type="button" class="proof-expand-btn" data-slide-index="${index}">Open larger view</button>` : ""}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  track.querySelectorAll("[data-expandable='true']").forEach(mediaWrap => {
+    mediaWrap.addEventListener("click", () => {
+      const index = Number(mediaWrap.dataset.slideIndex || 0);
+      openLightbox(proofState.slides[index]);
+    });
+  });
+
+  track.querySelectorAll(".proof-expand-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = Number(btn.dataset.slideIndex || 0);
+      openLightbox(proofState.slides[index]);
+    });
+  });
+
+  bindProofCarouselControls();
+  updateProofCarousel();
+}
+
+function initReveal() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const items = document.querySelectorAll(".reveal");
+  if (prefersReducedMotion) {
+    items.forEach(el => el.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  items.forEach(el => observer.observe(el));
 }
 
 function mediaMarkup(item, className = "") {
@@ -222,15 +455,9 @@ function render(data) {
     </article>
   `).join("");
 
-  document.getElementById("media-grid").innerHTML = data.media.map(item => `
-    <article class="media-card">
-      <div class="media-box">${mediaMarkup(item)}</div>
-      <div>
-        <h3>${item.title}</h3>
-        <p>${item.description}</p>
-      </div>
-    </article>
-  `).join("");
+  renderProof(resolveProofData(data));
+  bindLightboxControls();
+  initReveal();
 
   document.getElementById("testimonials-grid").innerHTML = data.testimonials.map(item => `
     <article class="item-card">

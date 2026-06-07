@@ -77,8 +77,20 @@
       <div class="section-head">
         <p class="section-kicker">Proof</p>
         <h2>Workflow demos, screenshots, and results</h2>
+        <p id="proof-intro">Live system visuals, walkthrough videos, and screenshots you can expand.</p>
       </div>
-      <div class="media-grid" id="media-grid"></div>
+      <div class="proof-showcase reveal" id="proof-showcase"></div>
+      <div class="proof-carousel-wrap reveal" id="proof-carousel-wrap" hidden>
+        <div class="proof-carousel" id="proof-carousel">
+          <button type="button" class="carousel-btn prev" id="proof-prev" aria-label="Previous slide">‹</button>
+          <div class="proof-carousel-viewport">
+            <div class="proof-carousel-track" id="proof-carousel-track"></div>
+          </div>
+          <button type="button" class="carousel-btn next" id="proof-next" aria-label="Next slide">›</button>
+        </div>
+        <div class="proof-carousel-meta" id="proof-carousel-meta"></div>
+        <div class="proof-carousel-dots" id="proof-carousel-dots"></div>
+      </div>
     </section>
 
     <section class="section testimonials">
@@ -106,6 +118,11 @@
     <span id="footer-name">Automation Systems</span>
     <span>VA-Kris 2026</span>
   </footer>
+
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+    <div class="lightbox-content" id="lightbox-content"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
